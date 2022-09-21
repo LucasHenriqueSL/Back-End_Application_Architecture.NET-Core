@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="T:API.Controllers.UsuarioController">
+             <summary>
+             test
+             </summary>
+             <param name= "loginViewModelInput"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
