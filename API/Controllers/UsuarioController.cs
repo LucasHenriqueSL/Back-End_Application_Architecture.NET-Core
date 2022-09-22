@@ -35,18 +35,18 @@ namespace API.Controllers
             //{
             //    return BadRequest(new ValidaCampoViewModelOutput(ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage)));
             //}
-            var secret = Encoding.ASCII.GetBytes(_configuration.GetSection(""));
+            var secret = Encoding.ASCII.GetBytes("MzfsT&d9gprP>!9$Es(X!5g@;ef!5sbk:jH\\2.}8ZP'qY#7");
             var symmetricSecurityKey = new SymmetricSecurityKey(secret);
             var securityTokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = ClaimsIdentity(new Claim[]
-                {
-                    newClaim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
-                    newClaim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
-                    newClaim(ClaimTypes.Email, usuarioViewModelOutput.Email.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(symmetricSecurityKey,)
+                //Subject = ClaimsIdentity(new Claim[]
+                //{
+                //    newClaim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
+                //    newClaim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
+                //    newClaim(ClaimTypes.Email, usuarioViewModelOutput.Email.ToString())
+                //}),
+                //Expires = DateTime.UtcNow.AddDays(1),
+                //SigningCredentials = new SigningCredentials(symmetricSecurityKey,SecurityAlgorithms.HmacSha256Signature)
 
             };
 
