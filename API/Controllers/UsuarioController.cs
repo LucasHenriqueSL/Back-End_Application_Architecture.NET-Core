@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using API.Filters;
 using API.Models;
 using API.Models.Usuarios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace API.Controllers
@@ -33,7 +35,20 @@ namespace API.Controllers
             //{
             //    return BadRequest(new ValidaCampoViewModelOutput(ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage)));
             //}
+            var secret = Encoding.ASCII.GetBytes(_configuration.GetSection(""));
+            var symmetricSecurityKey = new SymmetricSecurityKey(secret);
+            var securityTokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = ClaimsIdentity(new Claim[]
+                {
+                    newClaim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
+                    newClaim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
+                    newClaim(ClaimTypes.Email, usuarioViewModelOutput.Email.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(1),
+                SigningCredentials = new SigningCredentials(symmetricSecurityKey,)
 
+            };
 
             return Ok(loginViewModelInput);
         }
