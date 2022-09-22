@@ -4,12 +4,12 @@
         <name>API</name>
     </assembly>
     <members>
-        <member name="T:API.Controllers.UsuarioController">
+        <member name="M:API.Controllers.UsuarioController.Logar(API.Models.Usuarios.LoginViewModelInput)">
              <summary>
-             test
+             Este serviço permite autenticar um usuário cadastrado e ativo.
              </summary>
-             <param name= "loginViewModelInput"></param>
-            <returns></returns>
+             <param name= "loginViewModelInput">View model do login</param>
+            <returns>Retorna status ok, dados do usuario e o token em caso de sucesso</returns>
         </member>
     </members>
 </doc>

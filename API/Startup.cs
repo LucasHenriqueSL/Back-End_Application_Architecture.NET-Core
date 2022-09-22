@@ -27,15 +27,20 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen(c => 
-            {
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
 
+            
+            services.AddSwaggerGen(c =>
+            {
+                var xmlfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlpath = Path.Combine(AppContext.BaseDirectory, xmlfile);
+                c.IncludeXmlComments(xmlpath);
+
+                //c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Place Info Service API", Version = "v1", Description = "Sample service for Learner", });
 
             });
+            services.AddControllers().ConfigureApiBehaviorOptions(options => {
+                options.SuppressModelStateInvalidFilter = true;
+            }) ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,11 +62,12 @@ namespace API
                 endpoints.MapControllers();
             });
 
+            app.UseStaticFiles();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api curso");
-                c.RoutePrefix = string.Empty;//swagger
+                c.RoutePrefix = "swagger";//swagger
             });
 
         }
