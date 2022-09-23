@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LvtoNGZOlfjVjgcmP+TkDrJ5p98QYr7JldBQ23cS8nBmNHQvHnHEi1bHs5UhTRnAPTEmClBgBPzQduunlxEyww==",
+  "dgSpecHash": "O14M+jKgSkZ5B/pcIpnUfBvr8TzdDjfQAl+dauUYTDMe2SrMMPnlvEzEj9VP1fyv340RstgSnbJC5ERB04j9NQ==",
   "success": true,
   "projectFilePath": "D:\\Users\\lucas.lara\\source\\repos\\API\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,7 @@
     "D:\\Users\\lucas.lara\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.9\\microsoft.entityframeworkcore.3.1.9.nupkg.sha512",
     "D:\\Users\\lucas.lara\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.9\\microsoft.entityframeworkcore.abstractions.3.1.9.nupkg.sha512",
     "D:\\Users\\lucas.lara\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.9\\microsoft.entityframeworkcore.analyzers.3.1.9.nupkg.sha512",
+    "D:\\Users\\lucas.lara\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.9\\microsoft.entityframeworkcore.relational.3.1.9.nupkg.sha512",
     "D:\\Users\\lucas.lara\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "D:\\Users\\lucas.lara\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.9\\microsoft.extensions.caching.abstractions.3.1.9.nupkg.sha512",
     "D:\\Users\\lucas.lara\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.9\\microsoft.extensions.caching.memory.3.1.9.nupkg.sha512",

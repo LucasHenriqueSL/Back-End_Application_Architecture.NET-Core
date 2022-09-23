@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.OpenApi": {
               "target": "Package",
               "version": "[1.4.2, )"
