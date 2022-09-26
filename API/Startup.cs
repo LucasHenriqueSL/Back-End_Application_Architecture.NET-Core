@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using API.Business.Repositories;
+using API.Infraestrutura.Data.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -87,6 +89,9 @@ namespace API
                 };
             });
 
+
+
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             //services.AddControllers().ConfigureApiBehaviorOptions(options => {
             //    options.SuppressModelStateInvalidFilter = true;

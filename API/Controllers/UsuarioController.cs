@@ -15,6 +15,8 @@ using System.IdentityModel.Tokens.Jwt;
 using API.Infraestrutura.Data;
 using Microsoft.EntityFrameworkCore;
 using API.Business.Entities;
+using API.Business.Repositories;
+using API.Infraestrutura.Data.Repository;
 
 namespace API.Controllers
 {
@@ -22,6 +24,11 @@ namespace API.Controllers
     [ApiController] 
     public class UsuarioController : ControllerBase
     {
+
+
+
+        IUsuarioRepository _usuarioRepository;
+
         /// <summary>
         /// Este serviço permite autenticar um usuário cadastrado e ativo.
         /// </summary>
@@ -74,30 +81,42 @@ namespace API.Controllers
             });
         }
 
+
+        /// <summary>
+        /// Este serviço permite cadastrar um usuário cadastrado não existente
+        /// </summary>
+        /// <param name="registro">View Model do registro do login</param>
+      
+        [SwaggerResponse(statusCode: 200, description: "Sucesso ao autentica", Type = typeof(LoginViewModelInput))]
+        [SwaggerResponse(statusCode: 400, description: "Campos obrigatórios", Type = typeof(ValidaCampoViewModelOutput))]
+        [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
         [HttpPost]
         [Route("registrar")]
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<CursoDBContext>();
-            optionsBuilder.UseSqlServer("Server=localhost;Database=???;user=root;password=123456");
-            CursoDBContext contexto = new CursoDBContext(optionsBuilder.Options);
+            //var optionsBuilder = new DbContextOptionsBuilder<CursoDBContext>();
+            //optionsBuilder.UseSqlServer("Server=localhost;Database=test;user=root;password=123456");
+            //CursoDBContext contexto = new CursoDBContext(optionsBuilder.Options);
 
 
-            var migracoesPendentes = contexto.Database.GetPendingMigrationsAsync();
-            if(migracoesPendentes.Count() > 0)
-            {
-                contexto.Database.Migrate();
-            }
+            //var migracoesPendentes = contexto.Database.GetPendingMigrationsAsync();
+            //if(migracoesPendentes.Count() > 0)
+            //{
+            //    contexto.Database.Migrate();
+            //}
 
 
             var usuario = new Usuario();
             usuario.Login = loginViewModelInput.Login;
             usuario.Senha = loginViewModelInput.Senha;
-            usuario.Email = loginViewModelInput.Email;
+            usuario.Email = loginViewModelInput.Email;      
 
-            contexto.Usuario.Add(usuario);
-            contexto.SaveChanges();
+             _usuarioRepository.Adicionar(usuario);
+            _usuarioRepository.Commit();
+
+
+
             return Created("", loginViewModelInput);
         }
 
