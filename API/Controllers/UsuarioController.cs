@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using API.Business.Entities;
 using API.Business.Repositories;
 using API.Infraestrutura.Data.Repository;
+using Microsoft.Extensions.Configuration;
 
 namespace API.Controllers
 {
@@ -25,13 +26,12 @@ namespace API.Controllers
     public class UsuarioController : ControllerBase
     {
 
-
-
         private readonly IUsuarioRepository _usuarioRepository;
-
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        private readonly IUsuarioRepository _configuration;
+        public UsuarioController(IUsuarioRepository usuarioRepository, IConfiguration configuration)
         {
             _usuarioRepository = usuarioRepository;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -48,12 +48,6 @@ namespace API.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Logar(LoginViewModelInput loginViewModelInput)
         {
-
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(new ValidaCampoViewModelOutput(ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage)));
-            //}
-
             var usuarioViewModelOutput = new UsuarioViewModelOutput()
             {
                 Codigo = 1,
@@ -62,7 +56,7 @@ namespace API.Controllers
 
             };
 
-            var secret = Encoding.ASCII.GetBytes("MzfsT&d9gprP>!9$Es(X!5g@;ef!5sbk:jH\\2.}8ZP'qY#7");
+            var secret = Encoding.ASCII.GetBytes(_configuration.GetSection("JwtConfigurations: Secret").Value);
             var symmetricSecurityKey = new SymmetricSecurityKey(secret);
             var securityTokenDescriptor = new SecurityTokenDescriptor
             {
