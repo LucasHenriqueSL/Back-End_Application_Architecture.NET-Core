@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(CursoDBContext))]
-    [Migration("20220926121910_Base-inicial")]
+    [Migration("20220926124550_Base-inicial")]
     partial class Baseinicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

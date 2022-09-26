@@ -81,8 +81,15 @@ namespace API.Controllers
         {
             var optionsBuilder = new DbContextOptionsBuilder<CursoDBContext>();
             optionsBuilder.UseSqlServer("Server=localhost;Database=???;user=root;password=123456");
-
             CursoDBContext contexto = new CursoDBContext(optionsBuilder.Options);
+
+
+            var migracoesPendentes = contexto.Database.GetPendingMigrationsAsync();
+            if(migracoesPendentes.Count() > 0)
+            {
+                contexto.Database.Migrate();
+            }
+
 
             var usuario = new Usuario();
             usuario.Login = loginViewModelInput.Login;
