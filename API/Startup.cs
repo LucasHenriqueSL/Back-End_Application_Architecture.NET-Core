@@ -6,12 +6,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using API.Business.Repositories;
+using API.Infraestrutura.Data;
 using API.Infraestrutura.Data.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -89,7 +91,15 @@ namespace API
                 };
             });
 
+            //var optionsBuilder = new DbContextOptionsBuilder<CursoDBContext>();
+            //optionsBuilder.UseSqlServer("Server=localhost;Database=test;user=root;password=123456");
+            //CursoDBContext contexto = new CursoDBContext(optionsBuilder.Options);
 
+            services.AddDbContext<CursoDBContext>(options => 
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                
+            });
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 

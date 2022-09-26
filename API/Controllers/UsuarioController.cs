@@ -27,7 +27,12 @@ namespace API.Controllers
 
 
 
-        IUsuarioRepository _usuarioRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
+
+        public UsuarioController(IUsuarioRepository usuarioRepository)
+        {
+            _usuarioRepository = usuarioRepository;
+        }
 
         /// <summary>
         /// Este serviço permite autenticar um usuário cadastrado e ativo.
@@ -95,9 +100,7 @@ namespace API.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
         {
-            //var optionsBuilder = new DbContextOptionsBuilder<CursoDBContext>();
-            //optionsBuilder.UseSqlServer("Server=localhost;Database=test;user=root;password=123456");
-            //CursoDBContext contexto = new CursoDBContext(optionsBuilder.Options);
+           
 
 
             //var migracoesPendentes = contexto.Database.GetPendingMigrationsAsync();
