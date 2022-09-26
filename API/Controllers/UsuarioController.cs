@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 using System.IdentityModel.Tokens.Jwt;
+using API.Infraestrutura.Data;
+using Microsoft.EntityFrameworkCore;
+using API.Business.Entities;
 
 namespace API.Controllers
 {
@@ -76,8 +79,20 @@ namespace API.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
         {
+            var optionsBuilder = new DbContextOptionsBuilder<CursoDBContext>();
+            optionsBuilder.UseSqlServer("Server=localhost;Database=???;user=root;password=123456");
+
+            CursoDBContext contexto = new CursoDBContext(optionsBuilder.Options);
+
+            var usuario = new Usuario();
+            usuario.Login = loginViewModelInput.Login;
+            usuario.Senha = loginViewModelInput.Senha;
+            usuario.Email = loginViewModelInput.Email;
+
+            contexto.Usuario.Add(usuario);
+            contexto.SaveChanges();
             return Created("", loginViewModelInput);
         }
 
     }
-}
+} 

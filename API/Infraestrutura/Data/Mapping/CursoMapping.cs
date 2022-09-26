@@ -17,6 +17,7 @@ namespace API.Infraestrutura.Data.Mapping
             builder.Property(P => P.Codigo).ValueGeneratedOnAdd();
             builder.Property(P => P.Nome);
             builder.Property(P => P.Descricao);
+            builder.HasOne(p => p.Usuario).WithMany().HasForeignKey(fk => fk.CodigoUsuario);
         }
     }
 }

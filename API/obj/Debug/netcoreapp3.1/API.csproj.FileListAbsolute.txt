@@ -99,7 +99,6 @@ D:\Users\lucas.lara\source\repos\API\API\obj\Debug\netcoreapp3.1\API.csproj.Copy
 D:\Users\lucas.lara\source\repos\API\API\obj\Debug\netcoreapp3.1\API.dll
 D:\Users\lucas.lara\source\repos\API\API\obj\Debug\netcoreapp3.1\API.pdb
 D:\Users\lucas.lara\source\repos\API\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
-D:\Users\lucas.lara\source\repos\API\API\obj\Debug\netcoreapp3.1\API.csproj.AssemblyReference.cache
 C:\Users\lucas\OneDrive\Área de Trabalho\API\API\obj\Debug\netcoreapp3.1\API.dll
 C:\Users\lucas\OneDrive\Área de Trabalho\API\API\obj\Debug\netcoreapp3.1\API.pdb
 C:\Users\lucas\OneDrive\Área de Trabalho\API\API\obj\Debug\netcoreapp3.1\API.csproj.AssemblyReference.cache
@@ -215,3 +214,21 @@ D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Ident
 D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Users\lucas.lara\source\repos\API\API\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
