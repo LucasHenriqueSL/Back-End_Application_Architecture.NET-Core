@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using API.Business.Repositories;
+using API.Configurations;
 using API.Infraestrutura.Data;
 using API.Infraestrutura.Data.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -102,7 +103,8 @@ namespace API
             });
 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-
+            services.AddScoped<ICursoRepository, CursoRepository>();
+            services.AddScoped<IAuthenticationService, JwtService>();
             //services.AddControllers().ConfigureApiBehaviorOptions(options => {
             //    options.SuppressModelStateInvalidFilter = true;
             //}) ;

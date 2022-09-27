@@ -1,5 +1,6 @@
 ﻿using API.Business.Entities;
 using API.Business.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace API.Infraestrutura.Data.Repository
 
         public IList<Curso> ObterPorUsuario(int codigoUsuario)
         {
-            return _contexto.Curso.Where(w => w.CodigoUsuario == codigoUsuario).ToList();
+            return _contexto.Curso.Include(i => i.Usuario).Where(w => w.CodigoUsuario == codigoUsuario).ToList();
         }
     }
 }
