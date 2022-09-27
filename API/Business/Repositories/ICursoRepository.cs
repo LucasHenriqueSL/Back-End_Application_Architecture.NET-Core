@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace API.Business.Repositories
 {
-   public interface IUsuarioRepository
+    public interface ICursoRepository
     {
-        void Adicionar(Usuario usuario);
+        void Adicionar(Curso curso);
         void Commit();
-        Usuario ObterUsuario(string login);
+        IList<Curso> ObterPorUsuario(int codigoUsario);
+        
     }
 }

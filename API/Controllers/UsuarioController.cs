@@ -18,6 +18,7 @@ using API.Business.Entities;
 using API.Business.Repositories;
 using API.Infraestrutura.Data.Repository;
 using Microsoft.Extensions.Configuration;
+using API.Configurations;
 
 namespace API.Controllers
 {
@@ -27,12 +28,16 @@ namespace API.Controllers
     {
 
         private readonly IUsuarioRepository _usuarioRepository;
-        private readonly IUsuarioRepository _configuration;
-        public UsuarioController(IUsuarioRepository usuarioRepository, IConfiguration configuration)
+       
+        private readonly IAuthenticationService _authenticationService;
+
+        public UsuarioController(IUsuarioRepository usuarioRepository, IAuthenticationService authenticationService)
         {
             _usuarioRepository = usuarioRepository;
-            _configuration = configuration;
+       
+            _authenticationService = authenticationService;
         }
+
 
         /// <summary>
         /// Este serviço permite autenticar um usuário cadastrado e ativo.
@@ -48,31 +53,28 @@ namespace API.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Logar(LoginViewModelInput loginViewModelInput)
         {
+
+           var usuario =  _usuarioRepository.ObterUsuario(loginViewModelInput.Login);
+
+            if(usuario == null)
+            {
+                return BadRequest("Houve um erro ao tentar acessar");
+            }
+            //if(usuario.Senha != loginViewModelInput.Senha.GerarSenhaCriptografada())
+            //{
+            //    return BadRequest("Houve um erro ao tentar acessar");
+            //}
             var usuarioViewModelOutput = new UsuarioViewModelOutput()
             {
-                Codigo = 1,
-                Login = "Lucas", 
-                Email = "lucas@gmail.com"
-
+                Codigo = usuario.Codigo,
+                Login = loginViewModelInput.Login,
+                Email = usuario.Email
             };
 
-            var secret = Encoding.ASCII.GetBytes(_configuration.GetSection("JwtConfigurations: Secret").Value);
-            var symmetricSecurityKey = new SymmetricSecurityKey(secret);
-            var securityTokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
-                    new Claim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
-                    new Claim(ClaimTypes.Email, usuarioViewModelOutput.Email.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(symmetricSecurityKey,SecurityAlgorithms.HmacSha256Signature)
-            };
 
-            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-            var tokenGenerated = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
-            var token =  jwtSecurityTokenHandler.WriteToken(tokenGenerated);
+            
+           
+            var token = _authenticationService.GerarToken(usuarioViewModelOutput);
 
             return Ok(new { 
             Token = token,
@@ -109,7 +111,7 @@ namespace API.Controllers
             usuario.Senha = loginViewModelInput.Senha;
             usuario.Email = loginViewModelInput.Email;      
 
-             _usuarioRepository.Adicionar(usuario);
+            _usuarioRepository.Adicionar(usuario);
             _usuarioRepository.Commit();
 
 

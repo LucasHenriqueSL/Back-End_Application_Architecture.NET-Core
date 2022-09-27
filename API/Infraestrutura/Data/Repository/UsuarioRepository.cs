@@ -13,7 +13,7 @@ namespace API.Infraestrutura.Data.Repository
 
         public UsuarioRepository(CursoDBContext contexto)
         {
-           contexto = contexto;
+           _contexto = contexto;
         }
 
         public void Adicionar(Usuario usuario)
@@ -25,6 +25,11 @@ namespace API.Infraestrutura.Data.Repository
         public void Commit()
         {
             _contexto.SaveChanges();
+        }
+
+        public Usuario ObterUsuario(string login)
+        {
+           return _contexto.Usuario.FirstOrDefault(u => u.Login == login);
         }
     }
 
